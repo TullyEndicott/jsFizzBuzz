@@ -1,0 +1,69 @@
+// Get Values from page
+//starts or controller function
+function getValues(){
+    //Get values from page
+    //'startValue' is block scoped
+    let startValue = document.getElementById("startValue").value //although number it actually returns text
+    let endValue = document.getElementById("endValue").value;
+
+    //validation
+    //parse into integers
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+
+    if (Number.isInteger(startValue) && Number.isInteger(endValue)){
+        // call generate numbers
+       let numbers = generateNumbers(startValue, endValue); //numbers is an ra
+        displayNumbers(numbers);
+
+    }else{
+        alert("You must enter integers");
+    }
+
+
+    //call displayNumbers
+
+    function displayNumbers(numbers){
+
+        let templateRows = "";
+
+        let className = "even"
+
+        for(let index = 0; index < numbers.length; index++){
+
+            let number = numbers[index];
+            if(number % 2 == 0){
+                className = "even";
+            }else{
+                className = "odd"
+            }
+
+            templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+            // to make template literals render in Prism - use &lt; for '<' and &amp; for '&'
+           // templateRows += `&lt;tr>&lt;td class="${className}">${number}&lt;/td>&lt;/&tr>`;
+        }
+
+        document.getElementById("results").innerHTML = templateRows;
+    }
+}
+
+//generate numbers from start value to end value
+//logic function(s)
+function generateNumbers(startValue, endValue){
+
+    let numbers = [];
+
+    //get all numbers from start to end
+
+    for(let index = startValue; index <= endValue; index++){
+
+        //this will execute in a loop until index = endValur 100x
+        numbers.push(index);
+    }
+
+    return numbers;
+
+}
+
+//Display numbers and mark even numbers 'bold'
+//display or view functions

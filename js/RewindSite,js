@@ -1,0 +1,43 @@
+//get string from app page
+// controller function
+function getValue(){
+    hideAlert(); //makes sure div id='alert' invisible on start
+    let userString = document.getElementById('userString').value;
+    let revString = reverseString(userString);
+    displayString(revString);
+}
+
+//reverse string
+//logic function
+function reverseString(userString){
+    let revString = []; //allow array functions
+
+    for (let index = userString.length-1; index >= 0; index--) {
+       revString += userString[index]; //pust into revString
+        
+    }
+    return revString;
+}
+
+//display result and message
+//View function
+function displayString(revString){
+    //write to the page
+    document.getElementById("msg").innerHTML = `Your string reversed is: ${revString}`;
+    //show alert div
+    document.getElementById("alert").classList.remove("invisible");
+}
+
+function hideAlert(){  //hide 'alert' div
+    document.getElementById('alert').classList.add('invisible');
+}
+
+/********Inline script in app.html
+ * 
+ *   <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValue)
+    </script>
+    <script>
+        document.getElementById("btnReset").addEventListener("click", hideAlert)
+    </script>
+ */

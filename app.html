@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>FizzBuzz A Coding Project by Tully Endicott</title>
+    <title>FIZZBUZZ: A Coding Project by Tully Endicott</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,7 +47,7 @@
                         <a class="nav-link" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link"target="_blank" href="https://github.com/TullyEndicott/jsFizzBuzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"target="_blank" href="#">About</a>
@@ -63,34 +63,52 @@
             <div class="row row cols-1 row-cols-lg-2">
                 <div class="col-12 col-lg-4 border-end border-2">
                     <h1>FIZZBUZZ: A Coding Project</h1>
-                    <h4 class="lead">
-                        Two numbers are entered. The first smaller than the second. The Javascript program displays the numbers.<br>
-                        "Fizz" is substituted for umbers divisible by the 3.<br>
-                        "Buzz" is substituted for numbers divisible by 5.<br>
-                        Numbers divisible by both 3 and 5 are represented by <strong>"FizzBuzz"</strong> in <strong>BOLD</strong>
-                    </h4> 
+                        <p>
+                            Two numbers are entered representing "Fizz" and "Buzz".<br>
+                            The "Fizz" number is usually smaller than the "Buzz".
+                        </p>
+                        The Javascript program displays 100 numbers, 1 to 100.<br>
+                        <strong>"Fizz" </strong>is substituted for numbers divisible by the "Fizz" value.<br>
+                        <stong>"Buzz"</stong> is substituted for numbers divisible by the "Buzz" value.<br>
+                        Numbers divisible by both the "Fizz" value and the "Buzz" value are represented by <strong>"FizzBuzz"</strong> in <strong>BOLD</strong>
+                    
                     <h2 class="mt-5 border-top border-2">Instructions</h2>
-                    <p>Enter a starting and ending value.</p>
-                    <p>Press the 'Start' button and the values will appear.</p>
-                    <p>Press the 'Reset' button to start again.</p>  
+                    <p>
+                        Enter a "Fizz" and "Buzz" value.
+                    </p>
+                    <p>Press the <span class="text-white bg-success">'Start'</span> button and the values will appear.</p>
+                    <p>Press the <span class="text-white bg-danger">'Reset'</span> button to start again.</p>  
                 </div>
                 <div class="col-12 col-lg-8">
                     <form action="" class="row gy2 gx3">
-                        <div class="col">
-                            <input id="startValue" type="number" class="form-control" placeholder="Start Value" value=0 aria-label="Start Value">
-                        </div>
-                        <div class="col">
-                            <input id="endValue" type="number" class="form-control" placeholder="End Value" value=100 aria-label="End Value">
-                        </div>
                         <div class="row">
-                            <div class="col-6 d-flex justify-content-start pt-2">
-                                <button id="btnSubmit" type="button" class="btn btn-success btn-lg">Start</button>
+                            <div class="col-12 col-lg-6">
+                                <label for="fizzValue" class="form-label">Fizz Value</label>
+                                <input id="fizzValue" type="number" class="form-control" placeholder="3" value=3 aria-label="Fizz Value">
                             </div>
-                            <div class="col-6 d-flex justify-content-md-end pt-2">
-                                <button id="btnReset" type="reset" class="btn btn-danger">Reset</button>
+                            <div class="col-12 col-lg-6">
+                                <label for="buzzValue" class="form-label">Buzz Value</label>
+                                <input id="buzzValue" type="number" class="form-control" placeholder="5" value=5 aria-label="Buzz Value">
                             </div>
                         </div>
+                        <div class="row mt-2">
+                            <div class="col-6 d-flex justify-content-start">
+                                <button id="btnStart" type="button" class="btn btn-success btn-lg">Start</button>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button id="btnReset" type="reset" class="btn btn-danger">Reset</button>
+                               
+                            </div>
+                        </div>
+                        <h2 class="mt-5 border-top border-2">FIZZBUZZ Results</h2> 
+                        <div class="table-responsive">
+                            <table class="table table table-striped table-sm">
+                                <tbody id="results">
+                                    <!-- FIZZBUZZ results go here -->
+                                </tbody>
+                            </table>
 
+                        </div>
 
                     </form>
                 </div>
@@ -121,16 +139,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- Template for display Fizz Buzz at https://github.com/orgs/CoderFoundry/repositories-->
+    <template id="fbTemplate">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
-    <script src="js/site,js"></script>
+    <script src="js/site.js"></script>
     <script>
-        document.getElementById("btnSubmit").addEventListener("click", getValue)
+        document.getElementById("btnStart").addEventListener("click", getValues)
     </script>
     <script>
-        document.getElementById("btnReset").addEventListener("click", cleartable)
+        document.getElementById("btnReset").addEventListener("click", clearTable)
     </script>
 </body>
 

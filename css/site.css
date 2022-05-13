@@ -65,7 +65,8 @@ footer .social>a:hover{
 }
 
 .FIZZ {
-    color: #ff993b
+    color: darkgreen;
+    font-weight: bold;
 }
 
 .BUZZ {
@@ -74,6 +75,7 @@ footer .social>a:hover{
 
 .FIZZBUZZ {
     color: red;
+    font-weight: bold;
 }
 
 code[class*="language-"],

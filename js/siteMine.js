@@ -13,38 +13,17 @@ function getValues()
     //parse into integers
     fizzValue = parseInt(fizzValue);
     buzzValue = parseInt(buzzValue);
-    
-    //2. get value to test Buzz
-    //DO:
-    //Use "let" to declare a variable "buzzValue".  
-    //Assign it the value that you find in the the Html element
-    //with the id "buzzValue".  HINT: Use document.getElementById
-    
 
-    //3. check for integers numbers
-    //DO:
-    //Convert "fizzValue" to an integer using parseInt()
-
-    
-    //4. check for numbers
-    //DO:
-    //Convert "buzzValue" to an integer using parseInt()
-
-    //5. validate that "fizzValue" and "buzzValue" are actually Numbers(integers).
-    //DO:
+    // validate that "fizzValue" and "buzzValue" are actually Numbers(integers).
     //Use an "if-else-statement" to test the logical conjunction (AND &&) 
     //of the Number.isInteger() of "fizzValue" and "buzzValue"
-    if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
-        //6. we call generateNumbers
-        //DO:
+    if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){ //returns NaN if not interger
         //Use "let" to declare a variable "fbData".
         //Set it equal to the result of FizzBuzz(fizzValue, buzzValue)
-       let fbData =  FizzBuzz(fizzValue, buzzValue); //** recives 'returnArray' */
-        //7. we call displayData
-        //DO:
+       let fbData =  FizzBuzz(fizzValue, buzzValue); //** receives 'returnArray' */
         //Call custom function "displayData()" with "fbData" as the parameter
         //displayData(fbData);
-        displayData(fbData);
+        displayData(fbData); //print the array
 
     } else {
         //DO:
@@ -56,7 +35,7 @@ function getValues()
 }
 
 //Traditional Solve Fizz Buzz with a for loop
-function FizzBuzz(fizzValue, buzzValue) { //generateNumbers function
+function FizzBuzz(fizzValue, buzzValue) { //logic function
     //DO:
     //Use "let" to declare an array variable "returnArray"
     //Set it equal to []
@@ -88,12 +67,10 @@ function FizzBuzz(fizzValue, buzzValue) { //generateNumbers function
         //of the parameters "value1" (fizz) and "value2" (buzz) . (ie. i % value1 == 0)
         //First test whether the case is true for both "value1" AND (&&) "value2"
         if(i % fizzValue == 0 && i % buzzValue == 0){
-            //DO:
             //If the AND case is true then "push" the value 'FizzBuzz'
             //onto the "returnArray"
             returnArray.push("FIZZBUZZ");
         } 
-        //DO:
         //Else test if only the zero modulus(%)
         //of the "value1" is true
         else if (i % fizzValue == 0){
@@ -101,7 +78,6 @@ function FizzBuzz(fizzValue, buzzValue) { //generateNumbers function
             //If true then "push" the value 'Fizz' onto the "returnArray"
             returnArray.push("FIZZ");
         } 
-        //DO:
         //Else test if only the zero modulus(%)
         //of the "value2" is true
         else if(i % buzzValue == 0){
@@ -111,13 +87,11 @@ function FizzBuzz(fizzValue, buzzValue) { //generateNumbers function
         } 
         else
         {
-            //DO:
             //Else just push the number "i" onto the "returnArray"
             returnArray.push(i);           
         } 
     }
     
-    //DO:
     //Finally return the variable "returnArray"
     return returnArray;
 }
@@ -136,15 +110,15 @@ function displayData(fbData) {
     //clear table first
     tableBody.innerHTML = "";
 
-    for (let i = 0; i < fbData.length; i += 5) { //iterate by 5 rather than 1
-        let tableRow = document.importNode(templateRow.content, true); //'true' gets everything in template
-        //grab only the <td>s in the template
-        let rowCols = tableRow.querySelectorAll("td"); //
+    for (let i = 0; i < fbData.length; i += 5) {
+        const tableRow = document.importNode(templateRow.content, true);
+        //grab only the columns in the template
+        rowCols = tableRow.querySelectorAll("td");
 
-        rowCols[0].classList.add(fbData[i]); // css class names same as 'FIZZ','BUZZ', 'FIZZBUZZ'
-        rowCols[0].textContent = fbData[i]; // 1st td of current row
+        rowCols[0].classList.add(fbData[i]);
+        rowCols[0].textContent = fbData[i];
        
-        rowCols[1].classList.add(fbData[i+ 1]);// class name ignored if not in style sheet
+        rowCols[1].classList.add(fbData[i+ 1]);
         rowCols[1].textContent = fbData[i + 1];
        
         rowCols[2].classList.add(fbData[i+2]);
@@ -156,7 +130,7 @@ function displayData(fbData) {
         rowCols[4].classList.add(fbData[i+4]);
         rowCols[4].textContent = fbData[i + 4];
 
-        tableBody.appendChild(tableRow); //appends above to a COPY of the template
+        tableBody.appendChild(tableRow);
     }
 }
 

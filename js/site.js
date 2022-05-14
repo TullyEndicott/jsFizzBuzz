@@ -39,7 +39,10 @@ function getValues()
         //DO:
         //Use "let" to declare a variable "fbData".
         //Set it equal to the result of FizzBuzz(fizzValue, buzzValue)
-       let fbData =  FizzBuzz(fizzValue, buzzValue); //** recives 'returnArray' */
+
+       //let fbData =  FizzBuzz(fizzValue, buzzValue); //** receives 'returnArray' */
+       //let fbData =  fizzBuzzB(fizzValue, buzzValue); //** SWITCH receives  - fbData 'returnArray' */ 
+       let fbData =  fizzBuzzC(fizzValue, buzzValue); //** ternary IF receives - fbData 'returnArray' */      
         //7. we call displayData
         //DO:
         //Call custom function "displayData()" with "fbData" as the parameter
@@ -122,6 +125,53 @@ function FizzBuzz(fizzValue, buzzValue) { //generateNumbers function
     return returnArray;
 }
 
+function fizzBuzzB(fizzValue, buzzValue){
+//using boolean and switch
+    let returnArray = [];
+    let Fizz = false;
+    let Buzz = false;
+
+    for (let i= 1; i< 100; i++) {
+        
+        Fizz = i % fizzValue == 0;
+        Buzz = i % buzzValue == 0;
+        
+        switch(true){
+            case Fizz && Buzz:{
+                returnArray.push("FIZZBUZZ");
+                break;
+            }
+            case Fizz: {
+                returnArray.push("FIZZ");
+                break;
+            }
+            case Buzz: {
+                returnArray.push("BUZZ");
+                break;
+            }
+            default:{
+                returnArray.push(i);
+                break;
+            }
+        }
+    }
+
+    return returnArray;
+}
+
+//metastrad or mythical fizzBuzz
+function fizzBuzzC(fizzValue, buzzValue){
+    let returnArray = [];
+
+    for(let i = 1; i <= 100; i++){
+        // an empty string evaluates as false, any number (i) evaluates as true
+        let value = ((i % fizzValue == 0 ? 'FIZZ' : '' )  + (i % buzzValue == 0 ? 'BUZZ': '' ) || i );  
+        returnArray.push(value);
+    }
+
+    return returnArray;
+}
+
 //custom display function
 function displayData(fbData) {
 
@@ -139,7 +189,7 @@ function displayData(fbData) {
     for (let i = 0; i < fbData.length; i += 5) { //iterate by 5 rather than 1
         let tableRow = document.importNode(templateRow.content, true); //'true' gets everything in template
         //grab only the <td>s in the template
-        let rowCols = tableRow.querySelectorAll("td"); //
+        let rowCols = tableRow.querySelectorAll("td"); //rowCols is initialized an array
 
         rowCols[0].classList.add(fbData[i]); // css class names same as 'FIZZ','BUZZ', 'FIZZBUZZ'
         rowCols[0].textContent = fbData[i]; // 1st td of current row
